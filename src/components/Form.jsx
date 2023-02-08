@@ -1,9 +1,14 @@
 import { View, TextInput, StyleSheet, Text } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import theme from "../utils/theme";
 import Dropdown from "./Dropdown";
 
-const Form = () => {
+const Form = (props) => {
+  const { setCapital, setInteres, setMonths} = props
+  const [monthValue, setMonthValue] = useState(null)
+
+  const setFormMonths = (value) => setMonths(value)
+
   return (
     <View style={styles.viewForm}>
       <View style={styles.viewInputs}>
@@ -11,14 +16,16 @@ const Form = () => {
           placeholder="cantidad a pedir"
           keyboardType="numeric"
           style={styles.input}
+          onChange={ev => setCapital(+ev.nativeEvent.text)}
         />
         <TextInput
           placeholder="interés %"
           keyboardType="numeric"
           style={[styles.input, styles.inputPercentage]}
+          onChange={ev => setInteres(+ev.nativeEvent.text)}
         />
       </View>
-      <Dropdown />
+      <Dropdown setFormMonths={setFormMonths}/>
     </View>
   );
 };

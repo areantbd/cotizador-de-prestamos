@@ -2,19 +2,20 @@ import { useState } from "react";
 import { StyleSheet } from "react-native";
 import { Picker } from "@react-native-picker/picker";
 
-const Dropdown = () => {
+const Dropdown = (props) => {
   const [selectedMonths, setSelectedMonths] = useState(null);
 
-  console.log(selectedMonths)
+  props.setFormMonths(+selectedMonths)
 
   return (
     <Picker
-      prompt="select months"
+      // prompt="select months"
       mode="dialog"
       style={styles.inputAndroid}
       selectedValue={selectedMonths}
       onValueChange={(itemValue, itemIndex) => setSelectedMonths(itemValue)}
     >
+      <Picker.Item label="Seleccionar meses" value="0" />
       <Picker.Item label="3 meses" value="3" />
       <Picker.Item label="6 meses" value="6" />
       <Picker.Item label="12 meses" value="12" />
