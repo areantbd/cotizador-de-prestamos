@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Constants from "expo-constants";
 import {
   SafeAreaView,
@@ -18,11 +18,14 @@ export default function App() {
   const [interes, setInteres] = useState(null);
   const [months, setMonths] = useState(null);
   const [total, setTotal] = useState(null);
-  const [errorMessage, setErrorMessage] = useState(null)
-  console.log(errorMessage)
+  const [errorMessage, setErrorMessage] = useState(null);
+
+  useEffect(() => {
+    capital && interes && months ? calculate() : reset()
+  }, [capital, interes, months])
 
   const calculate = () => {
-    reset()
+    reset();
     if (!capital) {
       setErrorMessage("añade cantidad a solicitar");
     } else if (!interes) {
@@ -41,9 +44,9 @@ export default function App() {
   };
 
   const reset = () => {
-    setErrorMessage(null)
-    setTotal(null)
-  }
+    setErrorMessage(null);
+    setTotal(null);
+  };
 
   return (
     <>
@@ -58,10 +61,13 @@ export default function App() {
         />
       </SafeAreaView>
 
-      
-      
-        <Result capital={capital} interes={interes} months={months} total={total} errorMessage={errorMessage} />
-    
+      <Result
+        capital={capital}
+        interes={interes}
+        months={months}
+        total={total}
+        errorMessage={errorMessage}
+      />
 
       <Footer calculate={calculate} />
     </>
@@ -87,6 +93,6 @@ const styles = StyleSheet.create({
     fontSize: 25,
     color: "#fff",
     fontWeight: "bold",
-    marginTop: 10,
+    marginTop: 40,
   },
 });

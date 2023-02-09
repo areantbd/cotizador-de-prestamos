@@ -20,6 +20,8 @@ const Dropdown = (props) => {
       <Picker.Item label="6 meses" value="6" />
       <Picker.Item label="12 meses" value="12" />
       <Picker.Item label="24 meses" value="24" />
+      <Picker.Item label="48 meses" value="48" />
+      <Picker.Item label="72 meses" value="72" />
     </Picker>
   );
 };
