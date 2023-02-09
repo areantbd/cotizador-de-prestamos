@@ -1,5 +1,5 @@
-import { View, TextInput, StyleSheet, Text } from "react-native";
-import React, { useState } from "react";
+import { View, TextInput, StyleSheet} from "react-native";
+import React from "react";
 import theme from "../utils/theme";
 import Dropdown from "./Dropdown";
 
