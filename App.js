@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
-import Constants from "expo-constants";
 import {
   SafeAreaView,
   StyleSheet,
   Text,
   View,
   StatusBar,
-  Button,
 } from "react-native";
 import theme from "./src/utils/theme";
 import Form from "./src/components/Form";
@@ -27,15 +25,14 @@ export default function App() {
   const calculate = () => {
     reset();
     if (!capital) {
-      setErrorMessage("añade cantidad a solicitar");
+      setErrorMessage("Añade cantidad a solicitar");
     } else if (!interes) {
-      setErrorMessage("añade interés del prestamo");
+      setErrorMessage("Añade interés del préstamo");
     } else if (!months || months === 0) {
-      setErrorMessage("añade meses a pagar");
+      setErrorMessage("Selecciona meses a pagar");
     } else {
       const i = interes / 100;
       const fee = capital / ((1 - Math.pow(i + 1, -months)) / i);
-      console.log(`Todo ok, ${capital}€ al ${interes}% en ${months} meses.`);
       setTotal({
         monthlyFee: fee.toFixed(2).replace(".", ","),
         totalPay: (fee * months).toFixed(2).replace(".", ","),
@@ -78,7 +75,6 @@ const styles = StyleSheet.create({
   safeArea: {
     height: 290,
     alignItems: "center",
-    // marginTop: Constants.statusBarHeight,
   },
   background: {
     backgroundColor: theme.colors.primary,

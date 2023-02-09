@@ -9,7 +9,6 @@ const Dropdown = (props) => {
 
   return (
     <Picker
-      // prompt="select months"
       mode="dialog"
       style={styles.inputAndroid}
       selectedValue={selectedMonths}

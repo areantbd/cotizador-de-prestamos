@@ -5,7 +5,6 @@ import Dropdown from "./Dropdown";
 
 const Form = (props) => {
   const { setCapital, setInteres, setMonths} = props
-  const [monthValue, setMonthValue] = useState(null)
 
   const setFormMonths = (value) => setMonths(value)
 
